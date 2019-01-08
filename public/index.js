@@ -185,7 +185,23 @@ events[i1].commission.privateaser=events[i1].price -events[i1].price -events[i1]
 } 
 
 
+var i2 ;
+var i3;
+for(i2=0;i2<actors.length;i2++)
+{	
+    i3=0;
+	while(actors[i2].eventId!=events[i3].id){
+	i3++;
+	}
+	actors[i2].booker=-events[i3].price;
+	actors[i2].bar=events[i3].price-events[i3].commission.insurance-events[i3].commission.treasury-events[i3].commission.privateaser;
+	actors[i2].insurance=events[i3].commission.insurance;
+	actors[i2].treasury=events[i3].commission.treasury;
+	actors[i2].privateaser=events[i3].commission.privateaser;
+document.write("<br/>"); 
+document.write("Actualisation de "+actors[i2].eventId+"\n"+actors[i2].booker+"\n"+actors[i2].bar+"\n"+actors[i2].insurance+"\n"+actors[i2].treasury+"\n"+actors[i2].privateaser);
 
+}
 
 
 console.log(bars);
