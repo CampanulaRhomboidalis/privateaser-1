@@ -146,6 +146,48 @@ const actors = [{
   }]
 }];
 
+function functionPrix(barId,personne,temps){
+	var priceTime=0;
+	var pricePeople=0;
+	var i ;
+	var prix;
+	for(i=0;i<bars.length;i++)
+	{
+
+	if( bars[i].id === barId){
+	prix= personne*bars[i].pricePerPerson+bars[i].pricePerHour*temps;
+ 	if(personne>=60){
+	prix= prix*0.5;
+	}
+	if(personne<60 && personne >=20){
+	prix= prix*0.7;
+	}
+	if(personne>=10 && personne <20){
+	prix= prix*0.9;
+	}
+document.write("id du bar "+bars[i].id);
+		return prix;
+	
+	}
+}
+}
+document.write("<br/>"); 
+document.write("\n Message"+events[0].commission.insurance+"\n");
+var i1 ;
+for(i1=0;i1<events.length;i1++)
+{
+events[i1].price=functionPrix(events[i1].barId,events[i1].persons,events[i1].time);
+document.write("<br/>"); 
+document.write("\n Event price "+events[i1].price+"\n");
+events[i1].commission.insurance=0.5*events[i1].price;
+events[i1].commission.treasury=events[i1].persons;
+events[i1].commission.privateaser=events[i1].price -events[i1].price -events[i1].commission.treasury ;
+} 
+
+
+
+
+
 console.log(bars);
 console.log(events);
 console.log(actors);
